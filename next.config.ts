@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-
 const nextConfig: NextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
@@ -7,24 +6,18 @@ const nextConfig: NextConfig = {
     };
     return config;
   },
-
   async headers() {
     return [
       {
-        source: "/(.*)",
+        source: "/:path*",
         headers: [
           {
-            key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' https://framer.com https://*.framer.website;",
-          },
-          {
             key: "X-Frame-Options",
-            value: "ALLOW-FROM https://framer.com",
+            value: "ALLOWALL",
           },
         ],
       },
     ];
   },
 };
-
 export default nextConfig;
