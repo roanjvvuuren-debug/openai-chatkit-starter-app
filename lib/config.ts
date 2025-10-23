@@ -18,18 +18,19 @@ export const PLACEHOLDER_INPUT = "Ask anything...";
 export const GREETING = "How can I help you today?";
 
 export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
-  color: {
-    grayscale: {
-      hue: 220,
-      tint: 6,
-      shade: theme === "dark" ? -1 : -4,
-    },
-    accent: {
-      primary: theme === "dark" ? "#f1f5f9" : "#0f172a",
-      level: 1,
-    },
-  },
-  radius: "round",
-  // Add other theme options here
-  // chatkit.studio/playground to explore config options
+  radius: "pill",
+  density: "normal",
+  typography: {
+    baseSize: 16,
+    fontFamily: "Lora, serif",
+    fontSources: [
+      {
+        family: "Lora",
+        src: "https://fonts.gstatic.com/s/lora/v37/0QIvMX1D_JOuMwr7I_FMl_E.woff2",
+        weight: 400,
+        style: "normal",
+        display: "swap"
+      }
+    ]
+  }
 });
