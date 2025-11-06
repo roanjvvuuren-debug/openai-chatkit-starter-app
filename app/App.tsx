@@ -2,11 +2,8 @@
 
 import { useCallback } from "react";
 import { ChatKitPanel, type FactAction } from "@/components/ChatKitPanel";
-import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function App() {
-  const { scheme, setScheme } = useColorScheme();
-
   const handleWidgetAction = useCallback(async (action: FactAction) => {
     if (process.env.NODE_ENV !== "production") {
       console.info("[ChatKitPanel] widget action", action);
@@ -20,15 +17,13 @@ export default function App() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-end">
-    <div className="w-full h-full">
-        <ChatKitPanel
-          theme={scheme}
-          onWidgetAction={handleWidgetAction}
-          onResponseEnd={handleResponseEnd}
-          onThemeRequest={setScheme}
-        />
-      </div>
+    <main className="w-full h-full">
+      <ChatKitPanel
+        theme="light"
+        onWidgetAction={handleWidgetAction}
+        onResponseEnd={handleResponseEnd}
+        onThemeRequest={() => {}}
+      />
     </main>
   );
 }
